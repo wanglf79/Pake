@@ -224,7 +224,12 @@ jobs:
           if ($env:INPUT_NEW_WINDOW -eq "true") {
             $args += "--new-window"
           }
-
+          
+          # ======== 在这里强行加入托盘参数 ========
+          $args += "--show-system-tray"
+          $args += "--start-to-tray"
+          # ========================================
+          
           Write-Host "Running: node dist/cli.js $($args -join ' ')"
           node dist/cli.js $args
 
